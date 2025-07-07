@@ -8,8 +8,9 @@
 </head>
 <body>
     <header>
-        <h1>🏎️ Garage Racing</h1>
+        <h1>Garage Racing</h1>
         <p>Copa Turbo 2025 - Inscripción de Autos de Carrera</p>
+        <button id="modoOscuroToggle">Modo Oscuro</button>
     </header>
     <nav>
       <ul>
@@ -24,7 +25,7 @@
         <section id="inicio">
             <h2>Bienvenido a la Copa Turbo 2025</h2>
             <p>¡Únete al torneo automovilístico más esperado del año! Si tienes un auto modificado y estás listo para competir, este es tu momento.</p>
-            <img src="img/auto1.jpg" alt="Auto deportivo" style="max-width: 100%; height: auto;">
+            <img src="img/auto.jpg" alt="Auto deportivo" style="max-width: 70%; height: auto;">
 
             <h3>Categorías disponibles</h3>
             <ul>
@@ -74,10 +75,17 @@
                 <label for="anio">Año del auto:</label>
                 <input type="number" id="anio" min="1980" max="2025" required>
                 <p>Categoría en la que compites:</p>
-                <label class="checkbox"><input type="checkbox" name="categoria" value="Drift"> Drift</label><br>
-                <label class="checkbox"><input type="checkbox" name="categoria" value="Gt"> Gran Turismo</label><br>
-                <label class="checkbox"><input type="checkbox" name="categoria" value="Rally"> Rally</label><br>
-                <label class="checkbox"><input type="checkbox" name="categoria" value="Street"> Street Legal</label><br>
+                <div class="checkbox-wrapper">
+                  <input type="checkbox" id="drift" name="categoria" value="Drift">
+                  <label for="drift">Drift</label>
+                  <input type="checkbox" id="gt" name="categoria" value="Gt">
+                  <label for="gt">Gt</label>
+                  <input type="checkbox" id="rally" name="categoria" value="Rally">
+                  <label for="rally">Rally</label>
+                  <input type="checkbox" id="street" name="categoria" value="Street Legal">
+                  <label for="street">Street Legal</label>  
+                </div>
+ 
                 <label for="fecha">Fecha de inscripción:</label>
                 <input type="date" id="fecha" readonly>
                 <label for="comentarios">Comentarios del piloto:</label>
