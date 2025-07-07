@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage Racing - Copa Turbo 2025</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header>
+        <h1>🏎️ Garage Racing</h1>
+        <p>Copa Turbo 2025 - Inscripción de Autos de Carrera</p>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#equipo">Quiénes Somos</a></li>
+        <li><a href="#inscripcion">Inscripción</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <main>
+        <section id="inicio">
+            <h2>Bienvenido a la Copa Turbo 2025</h2>
+            <p>¡Únete al torneo automovilístico más esperado del año! Si tienes un auto modificado y estás listo para competir, este es tu momento.</p>
+            <img src="img/auto1.jpg" alt="Auto deportivo" style="max-width: 100%; height: auto;">
+
+            <h3>Categorías disponibles</h3>
+            <ul>
+                <li>🏁 Drift</li>
+                <li>🏎️ Gran Turismo</li>
+                <li>🏍️ Rally</li>
+                <li>🚗 Street Legal</li>
+            </ul>
+
+            <h3>Premios por categoría</h3>
+            <table>
+                <tr><th>Posición</th><th>Premio</th></tr>
+                <tr><td>1° lugar</td><td>$3.000.000 + trofeo</td></tr>
+                <tr><td>2° lugar</td><td>$1.500.000</td></tr>
+                <tr><td>3° lugar</td><td>$700.000</td></tr>
+            </table>
+        </section>
+
+        <section id="equipo">
+            <h2>Quiénes Somos</h2>
+            <p>Somos un equipo de fanáticos de los motores y las competencias. Organizamos eventos de alto nivel para pilotos aficionados y profesionales</p>
+            <img src="img/equipo.jpg" alt="Equipo organizador" style="max-width: 100%; height: auto;">
+            <ul>
+                <li>Organización desde 2017</li>
+                <li>Más de 5.000 autos inscritos</li>
+                <li>Pasión, mecánica y adrenalina</li>
+            </ul>
+        </section>
+
+        <section id="inscripcion">
+            <h2>Formulario de inscripción</h2>
+            <p>Completa los datos para participar en la competencia:</p>
+            <form id="form-inscripcion">
+                <label for="nombre">Nombre del piloto</label>
+                <input type="text" id="nombre" required>
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" required>
+                <label for="marca">Marca del auto:</label>
+                <select id="marca">
+                    <option value="Toyota">Toyota</option>
+                    <option value="Mazda">Mazda</option>
+                    <option value="Ford">Ford</option>
+                    <option value="Chevrolet">Chevrolet</option>
+
+                </select>
+
+                <label for="anio">Año del auto:</label>
+                <input type="number" id="anio" min="1980" max="2025" required>
+                <p>Categoría en la que compites:</p>
+                <label class="checkbox"><input type="checkbox" name="categoria" value="Drift"> Drift</label><br>
+                <label class="checkbox"><input type="checkbox" name="categoria" value="Gt"> Gran Turismo</label><br>
+                <label class="checkbox"><input type="checkbox" name="categoria" value="Rally"> Rally</label><br>
+                <label class="checkbox"><input type="checkbox" name="categoria" value="Street"> Street Legal</label><br>
+                <label for="fecha">Fecha de inscripción:</label>
+                <input type="date" id="fecha" readonly>
+                <label for="comentarios">Comentarios del piloto:</label>
+                <textarea id="comentarios" rows="4"></textarea>
+
+                <button type="submit">Enviar Mensaje</button>
+                <p id="mensajeExito" style="display:none; color: green;">¡Mensaje enviado correctamente!</p>
+            </form>
+        </section>
+        
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <p>¿Tienes preguntas o quieres más información? Escríbenos y te responderemos a la brevedad.</p>
+            <form id="form-contacto">
+                <label for="nombre-contacto">Nombre:</label>
+                <input type="text" id="nombre-contacto" required>
+
+                <label for="email-contacto">Correo electrónico:</label>
+                <input type="email" id="email-contacto" required>
+
+                <label for="mensaje-contacto">Mensaje:</label>
+                <textarea id="mensaje-contacto" rows="5" required></textarea>
+
+                <button type="submit">Enviar</button>
+                <p id="mensajeExitoContacto" style="display:none; color: green; margin-top: 10px;">¡Mensaje enviado correctamente!</p>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Garage Racing | Síguenos en Instagram y TikTok</p>
+    </footer>
+    <script src="js/script.js"></script>
+    
+</body>
+</html>

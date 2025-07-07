@@ -1,0 +1,150 @@
+:root{
+    --color-primario: #c0392b;
+    --color-secundario: #2c3e50;
+    --color-fondo: #f4f4f4;
+    --color-texto: #333;
+}
+body{
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+header{
+    background-color: var(--color-primario);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 10px;
+}
+nav li{
+    margin: 0 15px;
+}
+nav a{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover{
+    text-decoration: underline;
+}
+
+main{
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+section{
+    margin-bottom: 50px;
+}
+h2{
+    border-bottom: 2px solid var(--color-primario);
+    padding-bottom: 5px;
+    color: var(--color-secundario);
+}
+
+form{
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #ccc;
+}
+input[type="checkbox"]{
+    vertical-align: middle;
+    margin-right: 8px;
+}
+label.checkbox{
+    display: inline-flex;
+    align-items: center;
+    margin-top: 8px;
+    font-weight: normal;
+}
+label{
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+input, select, textarea, button {
+    width: 100%;
+    max-width: 400px;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-size: 1em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+button{
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button:hover{
+    background-color: #a93226;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+th, td{
+    border: 1px solid #aaa;
+    padding: 10px;
+    text-align: center;
+}
+th{
+    background-color: var(--color-primario);
+    color: white;
+}
+
+@media (max-width: 600px){
+    nav ul{
+        flex-direction: column;
+        padding: 15px 0;
+    }
+    nav li{
+        margin: 10px 0;
+    }
+    input, select, textarea, button{
+        font-size: 1em;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+footer{
+    background-color: var(--color-secundario);
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+#contacto{
+    margin-bottom: 50px;
+}
+#contacto form{
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #ccc;
+    max-width: 500px;
+    margin: auto;
+}
+
+section{
+    display: none;
+}
+section.activa{
+    display: block;
+}
