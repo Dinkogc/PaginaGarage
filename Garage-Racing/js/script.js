@@ -1,10 +1,33 @@
-window.addEventListener('DOMContentLoaded', ()=>{
-    const fechaInput=document.getElementById('fecha');
-    if (fechaInput){
-        fechaInput.valueAsDate=new Date();
+window.addEventListener('DOMContentLoaded', () => {
+    const fechaInput = document.getElementById('fecha');
+    if (fechaInput) {
+        fechaInput.valueAsDate = new Date();
     }
-    mostrarInscripciones();
+
+    mostrarSeccion("inicio");
+
+    document.querySelectorAll("nav a").forEach(enlace => {
+        enlace.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            
+            document.querySelectorAll("nav a").forEach(e => e.classList.remove("activo"));
+
+            enlace.classList.add("activo");
+
+            const id = enlace.getAttribute("href").substring(1);
+            mostrarSeccion(id);
+        });
+    });
 });
+function soloLetras(texto){
+    return /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(texto);
+}
+function correoValido(email) {
+    const regex = /^[\w.-]+@[\w.-]+\.[a-z]{2,6}$/i;
+    return regex.test(email);
+}
+
 document.getElementById('form-inscripcion').addEventListener('submit', function (e){
     e.preventDefault();
 
@@ -14,13 +37,21 @@ document.getElementById('form-inscripcion').addEventListener('submit', function 
     const anio=document.getElementById('anio').value;
     const fecha=document.getElementById('fecha').value;
     const comentarios=document.getElementById('comentarios').value.trim();
-
+    
     const categoriasSeleccionadas=[];
     document.querySelectorAll('input[name="categoria"]:checked').forEach((checkbox)=>{
         categoriasSeleccionadas.push(checkbox.value);
     });
     if(!nombre || !email || !anio || categoriasSeleccionadas.length ===0){
         alert("Por favor, completa todos los campos obligatorios.");
+        return;
+    }
+    if (!soloLetras(nombre)){
+        alert("El nombre solo puede contener letras y espacios.");
+        return;
+    }
+    if(!correoValido(email)){
+        alert("Por favor ingresa un correo con un dominio válido (como .cl, .com, .org, etc.)");
         return;
     }
     const inscripcion={
@@ -42,51 +73,71 @@ document.getElementById('form-inscripcion').addEventListener('submit', function 
     document.getElementById('fecha').valueAsDate=new Date();
 });
 
-function mostrarInscripciones(){
-    const inscripciones=JSON.parse(localStorage.getItem("inscripciones")) || [];
-    const tbody=document.querySelector("#tabla-inscritos tbody");
+document.getElementById('form-contacto').addEventListener('submit', function(e){
+    e.preventDefault();
 
-    tbody.innerHTML="";
+    const nombreContacto=document.getElementById('nombre-contacto').value.trim();
+    const emailContacto=document.getElementById('email-contacto').value.trim();
+    const mensaje=document.getElementById('mensaje-contacto').value.trim();
 
-    if (inscripciones.length===0){
-        const fila=document.createElement("tr");
-        const celda=document.createElement("td");
-        celda.colSpan=6;
-        celda.textContent="Aún no hay inscripciones registradas.";
-        celda.style.textAlign="center";
-        fila.appendChild(celda);
-        tbody.appendChild(fila);
+    if (!nombreContacto || !emailContacto || !mensaje){
+        alert('Por favor, completa todos los campos.');
         return;
     }
-    inscripciones.forEach(ins=>{
-        const fila=document.createElement("tr");
-        fila.innerHTML=`
-            <td>${ins.piloto}</td>
-            <td>${ins.email}</td>
-            <td>${ins.marca}</td>
-            <td>${ins.anio}</td>
-            <td>${ins.categorias.join(", ")}</td>
-            <td>${ins.comentarios}</td>
-        `;
-        tbody.appendChild(fila);        
+    if(!soloLetras(nombreContacto)){
+        alert("El nombre solo puede contener letras y espacios.");
+        return;
+    }
+    if(!correoValido(emailContacto)){
+        alert("Por favor ingresa un correo con un dominio válido (como .cl, .com, .org, etc.)");
+        return;
+    }
+    document.getElementById('mensajeExitoContacto').style.display='block';
+    this.reset();
+    setTimeout(()=>{
+        document.getElementById('mensajeExitoContacto').style.display='none';
+    }, 3000);
+    
+});
+
+function mostrarSeccion(id){
+    document.querySelectorAll("main section").forEach(seccion=>{
+        seccion.classList.remove("activa");
     });
+    const seccionActiva=document.getElementById(id);
+    if (seccionActiva){
+        seccionActiva.classList.add("activa");
+    }
 }
 
-window.addEventListener('DOMContentLoaded', mostrarInscripciones);
 
-document.getElementById('form-inscripcion').addEventListener('submit', function(){
-    setTimeout(mostrarInscripciones, 100);
+
+document.getElementById('modoOscuroToggle').addEventListener('click',()=>{
+    document.body.classList.toggle('modo-oscuro');
+});
+const botonModoOscuro=document.getElementById('modoOscuroToggle');
+if(localStorage.getItem('modoOscuro')==='true'){
+    document.body.classList.add('modo-oscuro');
+}
+
+botonModoOscuro.addEventListener('click',()=>{
+    document.body.classList.toggle('modo-oscuro');
+    const activado=document.body.classList.contains('modo-oscuro');
+    localStorage.setItem('modoOscuro',activado);
 });
 
-document.getElementById("borrarInscripciones").addEventListener("click", function(){
-    const confirmacion=confirm("¿Estás seguro que quieres borrar todas las inscripciones?");
-    if(confirmacion){
-        localStorage.removeItem("inscripciones");
-        mostrarInscripciones();
-        document.getElementById("mensajeBorrado").style.display="block";
-        setTimeout(()=>{
-            document.getElementById("mensajeBorrado").style.display="none";
+const actualizarIconoModo = () => {
+    botonModoOscuro.textContent = document.body.classList.contains('modo-oscuro') ? '🌞' : '🌙';
+};
 
-        }, 3000);
-    }
+actualizarIconoModo();
+
+botonModoOscuro.addEventListener('click', () => {
+    document.body.classList.toggle('modo-oscuro');
+    const activado = document.body.classList.contains('modo-oscuro');
+    localStorage.setItem('modoOscuro', activado);
+    actualizarIconoModo();
 });
+
+
+
