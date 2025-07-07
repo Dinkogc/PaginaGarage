@@ -20,10 +20,10 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-function soloLetras(texto){
+function soloLetras(texto){ //Acá se restringe el uso de signos y números
     return /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(texto);
 }
-function correoValido(email) {
+function correoValido(email){ //aquí se valida el formato de correo
     const regex = /^[\w.-]+@[\w.-]+\.[a-z]{2,6}$/i;
     return regex.test(email);
 }
@@ -38,7 +38,7 @@ document.getElementById('form-inscripcion').addEventListener('submit', function 
     const fecha=document.getElementById('fecha').value;
     const comentarios=document.getElementById('comentarios').value.trim();
     
-    const categoriasSeleccionadas=[];
+    const categoriasSeleccionadas=[];// estructura que almacena las categorías seleccionadas del formulario
     document.querySelectorAll('input[name="categoria"]:checked').forEach((checkbox)=>{
         categoriasSeleccionadas.push(checkbox.value);
     });
@@ -54,7 +54,7 @@ document.getElementById('form-inscripcion').addEventListener('submit', function 
         alert("Por favor ingresa un correo con un dominio válido (como .cl, .com, .org, etc.)");
         return;
     }
-    const inscripcion={
+    const inscripcion={ //Aquí se almacena los datos de inscripción de los pilotos
         piloto: nombre,
         email: email,
         marca: marca,
@@ -100,7 +100,7 @@ document.getElementById('form-contacto').addEventListener('submit', function(e){
     
 });
 
-function mostrarSeccion(id){
+function mostrarSeccion(id){ //Muestra la sección activa 
     document.querySelectorAll("main section").forEach(seccion=>{
         seccion.classList.remove("activa");
     });
