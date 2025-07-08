@@ -1,4 +1,4 @@
-:root{
+:root{ /* variables de colores para mantener coherencia */
     --color-primario: #c0392b;
     --color-secundario: #2c3e50;
     --color-fondo: #f4f4f4;
@@ -8,13 +8,18 @@ body{
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background: #f4f4f4;
+    background-image: url("../img/bandera.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
     color: #333;
     padding: 0;
 }
 header, nav{
     background-color: var(--color-primario);
     color: white;
-    padding: 15px;
+    padding: 8px 15px;
     text-align: center;
 }
 nav ul{
@@ -192,9 +197,17 @@ body.modo-oscuro textarea{
     border: 1px solid #555;
 }
 body.modo-oscuro button,
-body.modo-oscuro input[type="submit"]{
-    background-color: #444;
-    color: white;
+body.modo-oscuro input[type="submit"] {
+    background-color: #f39c12;
+    color: #121212;
+    border: none;
+    box-shadow: 0 0 8px rgba(243, 156, 18, 0.7);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+body.modo-oscuro button:hover,
+body.modo-oscuro input[type="submit"]:hover {
+    background-color: yellow;
 }
 body.modo-oscuro th{
     background-color: #333;
